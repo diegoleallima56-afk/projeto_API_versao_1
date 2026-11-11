@@ -1,0 +1,144 @@
+<!-- Declaração do tipo de documento HTML5 -->
+<!DOCTYPE html>
+<!-- Tag raiz com atributo de idioma padrão configurado para Português do Brasil -->
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <!-- Define a codificação de caracteres como UTF-8 para suporte a acentos e símbolos -->
+  <meta charset="UTF-8">
+  <!-- Configura a viewport para garantir responsividade mobile-first em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Define o título que aparece na aba do navegador -->
+  <title>FootStats Pro - Portal de Jogadores</title>
+  <!-- Vincula o arquivo CSS externo responsável pelos estilos e design system da aplicação -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Importa a biblioteca Font Awesome para inclusão de ícones nas mídias sociais e botões -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Início do cabeçalho principal da aplicação -->
+  <header class="header">
+    <!-- Container interno para centralização e limitação de largura do cabeçalho -->
+    <div class="header-container">
+      <!-- Logotipo da aplicação contendo ícone e texto explicativo -->
+      <div class="logo">
+        <!-- Ícone de bola de futebol para reforçar a identidade visual do app -->
+        <i class="fa-solid fa-futbol"></i>
+        <!-- Título do logotipo com destaque no sufixo Pro -->
+        <h1>FootStats <span>Pro</span></h1>
+      </div>
+
+      <!-- Barra de controle contendo pesquisa, alternador de tema e seletor de idioma -->
+      <div class="controls">
+        <!-- Formulário de busca avançada para capturar pesquisas por jogadores -->
+        <form id="search-form" class="search-box">
+          <!-- Campo de entrada para digitação do nome do jogador -->
+          <input type="text" id="search-input" placeholder="Buscar jogador (ex: Pelé, Haaland, Neymar)..." aria-label="Buscar jogador">
+          <!-- Botão para disparar a consulta de busca -->
+          <button type="submit" id="search-btn" aria-label="Pesquisar">
+            <!-- Ícone de lupa dentro do botão de busca -->
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+
+        <!-- Botão para alternar entre os temas Claro (Light) e Escuro (Dark) -->
+        <button id="theme-toggle" class="icon-btn" aria-label="Alternar Tema">
+          <!-- Ícone para indicar a opção de modo escuro/claro -->
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Seletor drop-down para alteração dinâmica de idioma (Português / Inglês) -->
+        <select id="language-select" class="lang-select" aria-label="Selecionar Idioma">
+          <!-- Opção do idioma Português -->
+          <option value="pt">PT-BR</option>
+          <!-- Opção do idioma Inglês -->
+          <option value="en">EN-US</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Seção principal que abrigará os cards e mensagens da aplicação -->
+  <main class="main-content">
+    <!-- Seção de apresentação/hero contendo título descritivo -->
+    <section class="hero-section">
+      <!-- Título dinâmico traduzível do portal -->
+      <h2 data-i18n="heroTitle">Craques do Futebol Mundial</h2>
+      <!-- Subtítulo traduzível com breves instruções de uso -->
+      <p data-i18n="heroSubtitle">Explore histórias, estatísticas e trajetórias dos maiores jogadores da história do futebol.</p>
+    </section>
+
+    <!-- Áreas de feedbacks de carregamento (Spinner) -->
+    <div id="loading-spinner" class="spinner-container hidden">
+      <!-- Anel de carregamento animado por CSS -->
+      <div class="spinner"></div>
+      <!-- Texto explicativo de carregamento -->
+      <p data-i18n="loadingText">Consultando base de dados esportiva...</p>
+    </div>
+
+    <!-- Container dinâmico onde os cards dos jogadores serão injetados via JS -->
+    <section id="players-grid" class="players-grid">
+      <!-- Os cards de jogadores serão inseridos dinamicamente aqui -->
+    </section>
+
+    <!-- Container de estado vazio/mensagem quando nenhum jogador for localizado -->
+    <div id="no-results" class="no-results hidden">
+      <!-- Ícone visual para indicar falha na busca -->
+      <i class="fa-solid fa-user-slash"></i>
+      <!-- Título de aviso de erro de busca -->
+      <h3 data-i18n="notFoundTitle">Jogador não encontrado</h3>
+      <!-- Descrição explicativa para orientar nova tentativa do usuário -->
+      <p data-i18n="notFoundDesc">Tente pesquisar por outros nomes como Messi, Ronaldo, Mbappé, Neymar ou Pelé.</p>
+    </div>
+  </main>
+
+  <!-- Rodapé oficial da aplicação -->
+  <footer class="footer">
+    <!-- Container interno do rodapé -->
+    <div class="footer-container">
+      <!-- Texto de direitos autorais e créditos -->
+      <p class="footer-text">&copy; 2026 FootStats Pro. <span data-i18n="footerRights">Todos os direitos reservados.</span></p>
+      
+      <!-- Lista de mídias sociais com efeitos hover estilizados -->
+      <div class="social-links">
+        <!-- Link social para Instagram com aria-label e classe personalizada -->
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn instagram" aria-label="Instagram">
+          <!-- Ícone do Instagram -->
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- Link social para Twitter / X com classe personalizada -->
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-btn twitter" aria-label="Twitter X">
+          <!-- Ícone do X (Twitter) -->
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <!-- Link social para GitHub com classe personalizada -->
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn github" aria-label="GitHub">
+          <!-- Ícone do GitHub -->
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Widget oficial do VLibras para acessibilidade de pessoas surdas -->
+  <div vw class="enabled">
+    <!-- Elemento de ancoragem exigido pelo script do VLibras -->
+    <div vw-access-button class="active"></div>
+    <!-- Container do componente visual do VLibras -->
+    <div vw-plugin-wrapper>
+      <!-- Invólucro do player VLibras -->
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <!-- Script oficial para inicialização do ecossistema VLibras -->
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <!-- Script JS interno de inicialização da instância VLibras -->
+  <script>
+    // Instancia o widget de acessibilidade em Libras nativo do governo federal
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <!-- Vincula o arquivo de lógica e manipulação DOM em JavaScript Vanilla -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+/* Definição de Variáveis CSS globais no pseudo-elemento :root para manipulação de Temas */
+:root {
+  /* Cores de fundo e superfícies para o tema Claro (Light Default) */
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-header: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  
+  /* Cores de destaque da marca (Azul Esportivo) */
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+
+  /* Efeitos de sombra e bordas arredondadas padrão do design system */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Cores oficiais exclusivas para os botões de redes sociais */
+  --color-instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  --color-twitter: #1da1f2;
+  --color-github: #24292e;
+
+  /* Animações e tempos de transição suaves */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Sobrescrita de Variáveis Globais quando o atributo data-theme for 'dark' */
+[data-theme="dark"] {
+  /* Cores de fundo e superfícies escuras ajustadas para alto contraste visual */
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --accent-light: #1e3a8a;
+  --color-github: #f0f6fc;
+}
+
+/* Reset universal de margens, espaçamentos e caixa modelo para previsibilidade */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilização base do corpo da página com tipografia padrão e suavização de fonte */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo do cabeçalho fixo no topo da interface */
+.header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition-normal);
+}
+
+/* Layout flexível para centralizar e alinhar o conteúdo do cabeçalho */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Estilização do logotipo do aplicativo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+/* Destaque em texto colorido para a palavra Pro no logotipo */
+.logo span {
+  color: #10b981;
+}
+
+/* Alinhamento dos botões e controles de pesquisa no lado direito do topo */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Estilização da caixa de entrada do formulário de busca */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+}
+
+/* Campo de input de busca sem bordas internas e com texto adaptável ao tema */
+.search-box input {
+  border: none;
+  background: transparent;
+  padding: 0.4rem;
+  color: var(--text-primary);
+  outline: none;
+  font-size: 0.9rem;
+  width: 180px;
+}
+
+/* Botão acionador de busca com ícone */
+.search-box button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: color var(--transition-fast);
+}
+
+/* Alteração de cor no hover do botão de busca */
+.search-box button:hover {
+  color: var(--accent-color);
+}
+
+/* Estilo genérico para botões com ícones da interface */
+.icon-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+/* Efeito hover nos botões de ícone */
+.icon-btn:hover {
+  background-color: var(--accent-light);
+}
+
+/* Estilização do menu de seleção de idiomas */
+.lang-select {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* Container principal de conteúdo com preenchimento responsivo */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+/* Estilos para a seção Hero de apresentação */
+.hero-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Título de capa da seção de cards */
+.hero-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtítulo informativo com cor atenuada */
+.hero-section p {
+  color: var(--text-secondary);
+}
+
+/* Layout em Grid fluido e responsivo para visualização dos cards */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Estilização individual dos cards de jogadores */
+.player-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Efeito de elevação visual no hover do card */
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Envolto da imagem para ajuste proporcional e controle de dimensões */
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: var(--border-color);
+}
+
+/* Ajuste da imagem para cobrir a área mantendo proporção de foto de atleta */
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Etiqueta flutuante exibindo a posição tática do jogador no topo da foto */
+.position-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Área de corpo e conteúdo textual dentro do card */
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Nome completo do jogador */
+.player-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+/* Clube/Time atual do atleta */
+.player-club {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Resumo descritivo da carreira */
+.player-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Bloco detalhado contendo a história de vida do jogador */
+.player-story {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+/* Botão para ativar a síntese de voz (Text-To-Speech) */
+.btn-speech {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--accent-color);
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color var(--transition-fast);
+}
+
+/* Mudança de aparência no hover do botão de áudio */
+.btn-speech:hover {
+  background-color: var(--accent-light);
+}
+
+/* Spinner e container para indicador de carregamento */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  gap: 1rem;
+}
+
+/* Animação CSS do círculo rotativo do spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Animação keyframes de rotação contínua */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Estilo para mensagem quando nenhum resultado for retornado */
+.no-results {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--text-secondary);
+}
+
+/* Ícone de alerta em busca sem resultados */
+.no-results i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Classe utilitária universal para ocultar elementos */
+.hidden {
+  display: none !important;
+}
+
+/* Estilização do Rodapé da página */
+.footer {
+  background-color: var(--bg-header);
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+/* Alinhamento dos itens internos do rodapé */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Agrupamento dos botões de mídias sociais */
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Botões individuais de mídias sociais com estilo de círculo */
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+/* Efeito de zoom e elevação ao passar o mouse em ícones sociais */
+.social-btn:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+}
+
+/* Efeito Hover com Gradiente exclusivo para o Instagram */
+.social-btn.instagram:hover {
+  background: var(--color-instagram);
+}
+
+/* Efeito Hover com a cor oficial do Twitter / X */
+.social-btn.twitter:hover {
+  background-color: var(--color-twitter);
+}
+
+/* Efeito Hover com a cor oficial do GitHub */
+.social-btn.github:hover {
+  background-color: var(--color-github);
+}
+
+/* Media Queries para adaptação responsiva em telas pequenas (smartphones) */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    flex: 1;
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
